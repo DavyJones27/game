@@ -1,0 +1,157 @@
+$background: #0B243C;
+$text-color: #D5CFB5;
+$shadow-color: #2c2c2c;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+@mixin alignStuff($var1, $var2) {
+  display: flex;
+  justify-content: $var1;
+  align-items: $var2;
+}
+
+.main {
+  background-image: url('/assets/background-1.png');
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover; 
+  height: 100vh;
+
+  .baskets {
+    @include alignStuff(space-between, center);
+    padding: 1rem;
+    position: fixed;
+    width: 100%;
+    z-index: 5;
+
+    .basket-1, .basket-2, .basket-3, .basket-4 {
+      width: 15rem;
+    }
+
+    .basket-1 {
+      transform: rotateY(40deg);
+    }
+
+    .basket-4 {
+      transform: rotateY(-40deg);
+    }
+  }
+  
+  .bottom {
+    @include alignStuff(space-between, flex-end);
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    z-index: 10;
+
+
+    .score-board,
+    .question-board,
+    .chance-board {
+      background-color: $background;
+      color: $text-color;
+      padding: 1rem;
+      margin: 3rem;
+      border-radius: 1rem;
+      box-shadow:  2px 2px 8px 4px $shadow-color;
+    }
+
+    .score-chances {
+      .chance-board {
+        img {
+          width: 2rem;
+        }
+      }
+    }
+
+    .middle {
+      @include alignStuff(center, center);
+      flex-direction: column;
+      z-index: 100;
+
+      .pointer {
+        img {
+          margin-bottom: 3rem;
+          transform: translateX(3rem) rotateX(10deg);
+          transform-origin: 0% 100%;
+          animation: movePointer 3s infinite alternate;
+          height: 10rem;
+        }
+      }
+      .ready-ball {
+        img {
+          margin-bottom: 1rem;
+          transform: translateX(3rem);
+          width: 3rem;
+          height: auto;
+          animation: throwBallToA 3s 1s infinite;
+        }
+      }
+    }
+
+    .score-board {
+      width: 8rem;
+      @include alignStuff(center, center);
+      flex-direction: column;
+      font-weight: 700;
+      font-size: 2rem;
+    }
+
+    .question-board {
+      width: 20rem;
+
+      .question-txt {
+        font-weight: 700;
+      }
+      .options {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  }
+}
+
+@keyframes movePointer {
+  0% {
+    transform: translateX(3rem) rotateZ(-60deg) rotateX(10deg);
+  }
+  100% {
+    transform: translateX(3rem) rotateZ(60deg) rotateX(10deg);
+  }
+}
+
+@keyframes throwBallToA {
+  25% {
+    transform: translate(-36rem,-35rem) rotate(1360deg);
+  }
+
+  75% {
+    transform: translate(-36rem,-30rem) rotate(1360deg);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes throwBallToB {
+  75% {
+    transform: translate(-10rem,-35rem) rotate(360deg);
+  }
+}
+
+@keyframes throwBallToC {
+  75% {
+    transform: translate(16rem,-35rem) rotate(360deg);
+  }
+}
+
+@keyframes throwBallToD {
+  75% {
+    transform: translate(42rem,-35rem) rotate(360deg);
+  }
+}
