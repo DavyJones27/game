@@ -4,7 +4,7 @@ let score = 0
 let paused = false;
 var angle;
 const pointer = document.querySelector(".pointer__img");
-var chosen;
+var chosen; // user selection is stored in this
 
 const decrChance = () => {
   if(chance < 0) {
