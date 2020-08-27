@@ -3,7 +3,8 @@ let questionCount = 0;
 let score = 0
 let paused = false;
 var angle;
-const pointer = document.querySelector(".pointer__img")
+const pointer = document.querySelector(".pointer__img");
+var chosen;
 
 const decrChance = () => {
   if(chance < 0) {
@@ -56,12 +57,16 @@ const throwBall = ()=> {
   var str = " 3s forwards";
   if(angle>=-60 && angle <-40) {
     str = "throwBallToA" + str;
+    chosen = "A";
   } else if(angle>= -40 && angle < 0) {
     str = "throwBallToB" + str;
+    chosen = "B";
   } else if(angle>= 0 && angle < 30) {
     str = "throwBallToC" + str;
+    chosen = "C";
   } else if(angle>= 30 && angle <= 60) {
     str = "throwBallToD" + str;
+    chosen = "D";
   }
   console.log('throwBall called');
   document.querySelector(".ready-ball__img").style.animation = str;
