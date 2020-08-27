@@ -18,10 +18,13 @@ $button-color: #8e42e6;
 
 .main-header {
   background: $background;
+  grid-area: header;
   height: 4rem;
   @include alignStuff(space-between, center);
   padding: 2rem;
-  
+  position: fixed;
+  width: 100%;
+
   .nav-items {
     list-style: none;
   }
@@ -30,5 +33,89 @@ $button-color: #8e42e6;
   .left-link {
     text-decoration: none;
     color: $text-color;
+  }
+}
+
+.main {
+  @include alignStuff(space-between, flex-start);
+  height: 100vh;
+  .sidebar {
+    flex: 1;
+    margin: 5rem 2rem;
+    background-color: $background;
+    padding: 1rem 2rem;
+    height: 50%;
+    border-radius: 1.5rem;
+
+    .sidebar-items {
+      list-style: none;
+
+      .sidebar-item {
+        margin-bottom: 0.5rem;
+
+        .sidebar-item__link {
+          color: $text-color;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+  
+  .view {
+    @include alignStuff(flex-start, flex-start);
+    flex-direction: column;
+    margin: 5rem;
+    flex: 10;
+
+    .questions-form {
+      @include alignStuff(flex-start, flex-start);
+      flex-direction: column;
+      height: 100%;
+      padding: 1rem;
+      width: 70%;
+
+      #question, #option-a, #option-b,
+      #option-c, #option-d, #correct-ans {
+        border: none;
+        background: none;
+        border-bottom: 2px solid $shadow-color;
+        padding: 0.5rem;
+        width: 100%;
+        transition: all 0.5s ease;
+      }
+
+      #option-a, #option-b,
+      #option-c, #option-d, #correct-ans {
+        margin-top: 1rem;
+        width: 80%;
+      }
+
+      #question:focus, #option-a:focus, #option-b:focus,
+      #option-c:focus, #option-d:focus, #correct-ans:focus {
+        border: none;
+        background: none;
+        outline: none;
+        border-bottom: 2px solid $button-color;
+      }
+    }
+
+    .btn {
+      background: none;
+      border: none;
+      border: 2px solid $button-color;
+      border-radius: 1rem;
+      margin: 1rem;
+      transition: all 0.5s ease;
+      font-size: 1.2rem;
+      padding: 1rem;
+    }
+
+    .btn:focus,
+    .btn:hover {
+      transform: scale(1.1);
+      background-color: $button-color;
+      outline: none;
+      color: #e4e3e3;
+    }
   }
 }

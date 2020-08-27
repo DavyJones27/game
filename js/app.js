@@ -80,8 +80,7 @@ const drawBall = () => {
     dx: 0,
     dy: 0 
   };
-  
-    ctx.drawImage(ballImg, ball.x + ball.dx, ball.y, ball.w, ball.h);
+  ctx.drawImage(ballImg, ball.x + ball.dx, ball.y, ball.w, ball.h);
 }
 
 const pointerImg = document.getElementById('pointer-img');
@@ -99,9 +98,12 @@ const drawPointer = () => {
 };
 
 function animatePointer() {
-  ctx.rotate(10 * Math.PI / 180);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  drawBasket();
+  drawBall();
   drawPointer();
   ctx.save();
+  ctx.tra
 }
 
 
