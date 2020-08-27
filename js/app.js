@@ -2,11 +2,8 @@ let chance = 5;
 let questionCount = 0;
 let score = 0
 let paused = false;
-const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
-ctx.canvas.width  = window.innerWidth;
-ctx.canvas.height = window.innerHeight;
-
+var angle;
+const pointer = document.querySelector(".pointer__img")
 
 const decrChance = () => {
   if(chance < 0) {
@@ -15,7 +12,7 @@ const decrChance = () => {
     let balls = document.querySelectorAll(".ball");
     balls[chance - 1].style.opacity = "0";
   }
-};
+}
 
 let questions = [], options = [[]], answers = [];
 // add a loop here to add questions and all
@@ -53,63 +50,42 @@ const checkAns = () => {
     pointer.classList.remove('paused');
   }, 3000);
   return;
-};
+}
 
-// canvas stuff
-const drawBasket = () => {
-  const basketImg = document.getElementById('basketImg');
-  const basket = { 
-    w: (0.15*canvas.width), 
-    h: (0.15*canvas.width),
-    x: (0.05*canvas.width), 
-    y: 20,
-    dx: 0 };
-  for(let i = 0; i < 4; i++) {
-    ctx.drawImage(basketImg, basket.x + basket.dx, basket.y, basket.w, basket.h);
-    basket.dx += 0.25*canvas.width;
+const throwBall = ()=> {
+  var str = " 3s forwards";
+  if(angle>=-60 && angle <-40) {
+    str = "throwBallToA" + str;
+  } else if(angle>= -40 && angle < 0) {
+    str = "throwBallToB" + str;
+  } else if(angle>= 0 && angle < 30) {
+    str = "throwBallToC" + str;
+  } else if(angle>= 30 && angle <= 60) {
+    str = "throwBallToD" + str;
   }
-};
-
-const drawBall = () => {
-  const ballImg = document.getElementById('ball-img');
-  const ball = { 
-    w: 80, 
-    h: 80,
-    x: (canvas.width/2 - 40), 
-    y: (canvas.height - 100),
-    dx: 0,
-    dy: 0 
-  };
-  ctx.drawImage(ballImg, ball.x + ball.dx, ball.y, ball.w, ball.h);
+  console.log('throwBall called');
+  document.querySelector(".ready-ball__img").style.animation = str;
+  pointer.classList.remove('paused');
 }
-
-const pointerImg = document.getElementById('pointer-img');
-const pointer = { 
-  w: 80, 
-  h: 80,
-  x: (canvas.width/2 - 40), 
-  y: (canvas.height - 200),
-  deg: 20
-};
-
-const drawPointer = () => {
-  ctx.drawImage(pointerImg, pointer.x, pointer.y, pointer.w, pointer.h);
-  // window.requestAnimationFrame(animatePointer);
-};
-
-function animatePointer() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  drawBasket();
-  drawBall();
-  drawPointer();
-  ctx.save();
-  ctx.tra
-}
-
 
 
 const app = () => {
   setQuestion();
-};
+  window.addEventListener('click',()=> {
+    pointer.classList.add('paused');
+    var st = window.getComputedStyle(pointer, null); 
+    var tr = st.getPropertyValue("transform");
+
+    var values = tr.split('(')[1],
+    values = values.split(')')[0],
+    values = values.split(',');
+
+    var b = values[1];
+
+    angle = Math.round(Math.asin(b) * (180/Math.PI));
+    console.log(angle);
+    throwBall();
+  });
+}
 
 app();
