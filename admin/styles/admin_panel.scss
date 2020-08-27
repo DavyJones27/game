@@ -57,6 +57,10 @@ $button-color: #8e42e6;
           color: $text-color;
           text-decoration: none;
         }
+
+        .sidebar-item__link:hover {
+          text-decoration: underline;
+        }
       }
     }
   }

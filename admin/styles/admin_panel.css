@@ -71,6 +71,10 @@
   text-decoration: none;
 }
 
+.main .sidebar .sidebar-items .sidebar-item .sidebar-item__link:hover {
+  text-decoration: underline;
+}
+
 .main .view {
   display: -webkit-box;
   display: -ms-flexbox;
