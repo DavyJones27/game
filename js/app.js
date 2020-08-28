@@ -5,6 +5,24 @@ let paused = false;
 var angle;
 const pointer = document.querySelector(".pointer__img");
 var chosen; // user selection is stored in this
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+ctx.canvas.width  = window.innerWidth;
+ctx.canvas.height = 200;
+
+const msg = document.querySelector(".msg-txt");
+
+const drawBasket = () => {
+  const basket1 = document.getElementById('basket-1');
+  const basket2 = document.getElementById('basket-2');
+  const basket3 = document.getElementById('basket-3');
+  const basket4 = document.getElementById('basket-4');
+  const width = canvas.width; 
+  ctx.drawImage(basket1, (0.1 * width - 200/2), 20, 200, 200);
+  ctx.drawImage(basket2, (0.35 * width - 200/2), 20, 200, 200);
+  ctx.drawImage(basket3, (0.65 * width - 200/2), 20, 200, 200);
+  ctx.drawImage(basket4, (0.9 * width - 200/2), 20, 200, 200);
+}
 
 const decrChance = () => {
   if(chance < 0) {
@@ -46,14 +64,18 @@ setQuestion = () => {
 }
 
 const checkAns = () => {
-  // todo
-  setTimeout(()=> {
-    pointer.classList.remove('paused');
-  }, 3000);
-  return;
+  var correct = false;
+  // setTimeout(()=> {
+  //   //todo
+  // }, 3000);
 }
 
+
+
 const throwBall = ()=> {
+  msg.style.animation = "";
+  msg.innerHTML="";
+
   var str = " 3s forwards";
   if(angle>=-60 && angle <-40) {
     str = "throwBallToA" + str;
@@ -61,16 +83,18 @@ const throwBall = ()=> {
   } else if(angle>= -40 && angle < 0) {
     str = "throwBallToB" + str;
     chosen = "B";
-  } else if(angle>= 0 && angle < 30) {
+  } else if(angle>= 0 && angle < 40) {
     str = "throwBallToC" + str;
     chosen = "C";
-  } else if(angle>= 30 && angle <= 60) {
+  } else if(angle>= 40 && angle <= 60) {
     str = "throwBallToD" + str;
     chosen = "D";
   }
   console.log('throwBall called');
   document.querySelector(".ready-ball__img").style.animation = str;
   pointer.classList.remove('paused');
+
+  checkAns();
 }
 
 

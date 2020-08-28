@@ -21,27 +21,23 @@ $shadow-color: #2c2c2c;
   background-repeat: no-repeat; 
   background-size: cover; 
   height: 100vh;
+  overflow: hidden;
 
-  .baskets {
-    @include alignStuff(space-between, center);
-    padding: 1rem;
-    position: fixed;
-    width: 100%;
-    z-index: 5;
-    user-select: none;
-    pointer-events: none;
+  .msg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
-    .basket-1, .basket-2, .basket-3, .basket-4 {
-      width: 15rem;
+    .msg-txt {
+      font-size: 3rem;
+      font-weight: 700;
+      pointer-events: none;
     }
+  }
 
-    .basket-1 {
-      transform: rotateY(40deg);
-    }
-
-    .basket-4 {
-      transform: rotateY(-40deg);
-    }
+  .basket-1,.basket-2, .basket-3, .basket-4 {
+    display: none;
   }
 
   .bottom {
@@ -135,15 +131,15 @@ $shadow-color: #2c2c2c;
 
 @keyframes throwBallToA {
   25% {
-    transform: translate(-75vh,-75vh) rotate(1360deg);
+    transform: translate(-36vw,-75vh) rotate(1360deg);
   }
 
   50% {
-    transform: translate(-75vh,-60vh) rotate(1360deg);
+    transform: translate(-36vw,-60vh) rotate(1360deg);
     opacity: 0;
   }
   75% {
-    transform: translate(-75vh,0vh);
+    transform: translate(-50vw,0vh);
     opacity: 0;
   }
   100% {
@@ -154,11 +150,11 @@ $shadow-color: #2c2c2c;
 
 @keyframes throwBallToB {
   25% {
-    transform: translate(-22vh,-75vh) rotate(1360deg);
+    transform: translate(-12vw,-75vh) rotate(1360deg);
   }
 
   50% {
-    transform: translate(-22vh,-60vh) rotate(1360deg);
+    transform: translate(-12vw,-60vh) rotate(1360deg);
     opacity: 0;
   }
   75% {
@@ -173,11 +169,11 @@ $shadow-color: #2c2c2c;
 
 @keyframes throwBallToC {
   25% {
-    transform: translate(35vh,-75vh) rotate(1360deg);
+    transform: translate(18vw,-75vh) rotate(1360deg);
   }
 
   50% {
-    transform: translate(35vh,-60vh) rotate(1360deg);
+    transform: translate(18vw,-60vh) rotate(1360deg);
     opacity: 0;
   }
   75% {
@@ -208,3 +204,28 @@ $shadow-color: #2c2c2c;
     opacity: 1;
   }
 } 
+
+@keyframes flashMsg {
+  25% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  30% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0;
+  }
+  80% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  90% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+  }
+}

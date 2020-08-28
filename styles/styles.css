@@ -12,41 +12,25 @@
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
+  overflow: hidden;
 }
 
-.main .baskets {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 1rem;
-  position: fixed;
-  width: 100%;
-  z-index: 5;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+.main .msg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.main .msg .msg-txt {
+  font-size: 3rem;
+  font-weight: 700;
   pointer-events: none;
 }
 
-.main .baskets .basket-1, .main .baskets .basket-2, .main .baskets .basket-3, .main .baskets .basket-4 {
-  width: 15rem;
-}
-
-.main .baskets .basket-1 {
-  -webkit-transform: rotateY(40deg);
-          transform: rotateY(40deg);
-}
-
-.main .baskets .basket-4 {
-  -webkit-transform: rotateY(-40deg);
-          transform: rotateY(-40deg);
+.main .basket-1, .main .basket-2, .main .basket-3, .main .basket-4 {
+  display: none;
 }
 
 .main .bottom {
@@ -185,17 +169,17 @@
 
 @-webkit-keyframes throwBallToA {
   25% {
-    -webkit-transform: translate(-75vh, -75vh) rotate(1360deg);
-            transform: translate(-75vh, -75vh) rotate(1360deg);
+    -webkit-transform: translate(-36vw, -75vh) rotate(1360deg);
+            transform: translate(-36vw, -75vh) rotate(1360deg);
   }
   50% {
-    -webkit-transform: translate(-75vh, -60vh) rotate(1360deg);
-            transform: translate(-75vh, -60vh) rotate(1360deg);
+    -webkit-transform: translate(-36vw, -60vh) rotate(1360deg);
+            transform: translate(-36vw, -60vh) rotate(1360deg);
     opacity: 0;
   }
   75% {
-    -webkit-transform: translate(-75vh, 0vh);
-            transform: translate(-75vh, 0vh);
+    -webkit-transform: translate(-50vw, 0vh);
+            transform: translate(-50vw, 0vh);
     opacity: 0;
   }
   100% {
@@ -207,17 +191,17 @@
 
 @keyframes throwBallToA {
   25% {
-    -webkit-transform: translate(-75vh, -75vh) rotate(1360deg);
-            transform: translate(-75vh, -75vh) rotate(1360deg);
+    -webkit-transform: translate(-36vw, -75vh) rotate(1360deg);
+            transform: translate(-36vw, -75vh) rotate(1360deg);
   }
   50% {
-    -webkit-transform: translate(-75vh, -60vh) rotate(1360deg);
-            transform: translate(-75vh, -60vh) rotate(1360deg);
+    -webkit-transform: translate(-36vw, -60vh) rotate(1360deg);
+            transform: translate(-36vw, -60vh) rotate(1360deg);
     opacity: 0;
   }
   75% {
-    -webkit-transform: translate(-75vh, 0vh);
-            transform: translate(-75vh, 0vh);
+    -webkit-transform: translate(-50vw, 0vh);
+            transform: translate(-50vw, 0vh);
     opacity: 0;
   }
   100% {
@@ -229,12 +213,12 @@
 
 @-webkit-keyframes throwBallToB {
   25% {
-    -webkit-transform: translate(-22vh, -75vh) rotate(1360deg);
-            transform: translate(-22vh, -75vh) rotate(1360deg);
+    -webkit-transform: translate(-12vw, -75vh) rotate(1360deg);
+            transform: translate(-12vw, -75vh) rotate(1360deg);
   }
   50% {
-    -webkit-transform: translate(-22vh, -60vh) rotate(1360deg);
-            transform: translate(-22vh, -60vh) rotate(1360deg);
+    -webkit-transform: translate(-12vw, -60vh) rotate(1360deg);
+            transform: translate(-12vw, -60vh) rotate(1360deg);
     opacity: 0;
   }
   75% {
@@ -251,12 +235,12 @@
 
 @keyframes throwBallToB {
   25% {
-    -webkit-transform: translate(-22vh, -75vh) rotate(1360deg);
-            transform: translate(-22vh, -75vh) rotate(1360deg);
+    -webkit-transform: translate(-12vw, -75vh) rotate(1360deg);
+            transform: translate(-12vw, -75vh) rotate(1360deg);
   }
   50% {
-    -webkit-transform: translate(-22vh, -60vh) rotate(1360deg);
-            transform: translate(-22vh, -60vh) rotate(1360deg);
+    -webkit-transform: translate(-12vw, -60vh) rotate(1360deg);
+            transform: translate(-12vw, -60vh) rotate(1360deg);
     opacity: 0;
   }
   75% {
@@ -273,12 +257,12 @@
 
 @-webkit-keyframes throwBallToC {
   25% {
-    -webkit-transform: translate(35vh, -75vh) rotate(1360deg);
-            transform: translate(35vh, -75vh) rotate(1360deg);
+    -webkit-transform: translate(18vw, -75vh) rotate(1360deg);
+            transform: translate(18vw, -75vh) rotate(1360deg);
   }
   50% {
-    -webkit-transform: translate(35vh, -60vh) rotate(1360deg);
-            transform: translate(35vh, -60vh) rotate(1360deg);
+    -webkit-transform: translate(18vw, -60vh) rotate(1360deg);
+            transform: translate(18vw, -60vh) rotate(1360deg);
     opacity: 0;
   }
   75% {
@@ -295,12 +279,12 @@
 
 @keyframes throwBallToC {
   25% {
-    -webkit-transform: translate(35vh, -75vh) rotate(1360deg);
-            transform: translate(35vh, -75vh) rotate(1360deg);
+    -webkit-transform: translate(18vw, -75vh) rotate(1360deg);
+            transform: translate(18vw, -75vh) rotate(1360deg);
   }
   50% {
-    -webkit-transform: translate(35vh, -60vh) rotate(1360deg);
-            transform: translate(35vh, -60vh) rotate(1360deg);
+    -webkit-transform: translate(18vw, -60vh) rotate(1360deg);
+            transform: translate(18vw, -60vh) rotate(1360deg);
     opacity: 0;
   }
   75% {
@@ -356,6 +340,64 @@
     -webkit-transform: translateX(3rem);
             transform: translateX(3rem);
     opacity: 1;
+  }
+}
+
+@-webkit-keyframes flashMsg {
+  25% {
+    opacity: 1;
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+  30% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    opacity: 0;
+  }
+  80% {
+    opacity: 1;
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+  90% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes flashMsg {
+  25% {
+    opacity: 1;
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+  30% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    opacity: 0;
+  }
+  80% {
+    opacity: 1;
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+  90% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  100% {
+    opacity: 0;
   }
 }
 /*# sourceMappingURL=styles.css.map */
