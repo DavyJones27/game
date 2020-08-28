@@ -111,3 +111,78 @@ const app = () => {
 };
 
 app();
+
+
+
+//  to fetch all question
+const fetchAllData =async url => {
+  try{
+let response = await fetch(url)
+if (res.status !== 200 && res.status !== 201) {
+  throw new Error("Failed");
+}
+  response= await response.json()
+  return response    
+}
+catch(err)  {
+      console.log(err);
+    };
+};
+
+let data = fetchAllData("http://127.0.0.1:3000/users/questions")
+
+
+//  to send name and score or any data 
+const sendData = async (url, data, method) => {
+  let id;
+  try {
+    let res = await fetch(url, {
+      method: method,
+      body: JSON.stringify(data),
+      headers: {
+        "Content-type": "application/json"
+      }
+    });
+    console.log(res);
+      if (res.status !== 200 && res.status !== 201) {
+        throw new Error("Failed");
+      }
+    res = await res.json();
+    return res.id
+  }
+  catch (err) {
+    console.log(err);
+  }
+};
+
+
+let data;//your data 
+const res = sendData("http://127.0.0.1:3000/users/questions",data,"POST")
+
+// data format
+// [
+//   {
+//       "_id": "5f4922116c9e6da02cbb6d34",
+//       "question": "abc",
+//       "option1": "1",
+//       "option2": "2",
+//       "option3": "3",
+//       "option4": "4",
+//       "solution": "1",
+//       "createdAt": "2020-08-28T15:26:09.128Z",
+//       "updatedAt": "2020-08-28T15:26:09.128Z",
+//       "__v": 0
+//   },
+//   {
+//       "_id": "5f4926b75ed877a9e71a4142",
+//       "question": "ajay",
+//       "option1": "knlsk",
+//       "option2": "nsklnlsk",
+//       "option3": "knskln",
+//       "option4": "kl slk",
+//       "solution": "nklnslk",
+//       "createdAt": "2020-08-28T15:45:59.051Z",
+//       "updatedAt": "2020-08-28T15:45:59.051Z",
+//       "__v": 0
+//   }
+// ]
