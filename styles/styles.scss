@@ -16,7 +16,7 @@ $shadow-color: #2c2c2c;
 }
 
 .main {
-  background-image: url('/assets/background-1.png');
+  background-image: url('/assets/background-2.png');
   background-position: center; 
   background-repeat: no-repeat; 
   background-size: cover; 
@@ -28,6 +28,8 @@ $shadow-color: #2c2c2c;
     position: fixed;
     width: 100%;
     z-index: 5;
+    user-select: none;
+    pointer-events: none;
 
     .basket-1, .basket-2, .basket-3, .basket-4 {
       width: 15rem;
@@ -48,6 +50,8 @@ $shadow-color: #2c2c2c;
     position: fixed;
     bottom: 0;
     z-index: 10;
+    user-select: none;
+    pointer-events: none;
 
 
     .score-board,
